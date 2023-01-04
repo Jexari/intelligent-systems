@@ -1,9 +1,10 @@
 import copy
+import sys
 from operator import itemgetter
 start=[[1, 2, 3], [8, 0, 4], [7, 6, 5]]
 target=[[5, 3, 4], [6, 0, 7], [8, 2, 1]]
 story, steps=[], 0
-
+sys.setrecursionlimit(10001)
 def left_rule(s, t1, t2):
     s[t1][t2], s[t1][t2-1]=s[t1][t2-1], s[t1][t2]
     return s
@@ -37,7 +38,7 @@ def check(s, last_step, deep, distance):
     global story, target, steps
     print('Step: ', steps, 'Deep:', deep, "Distance: ", distance, s)
     steps+=1
-    if deep>1000:
+    if deep>10000:
         return 0
     if story.count(s)==1:
         return 0
